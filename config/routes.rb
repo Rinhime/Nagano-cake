@@ -5,9 +5,15 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
-  resources :orders, only: [:new, :create, :index, :show, :finish, :confirm]
+  resources :orders, only: [:new, :create, :index, :show]
+  post "/orders/confirm" => "orders#confirm"
+  get "/orders/finish" => "orders#finish"
   resources :items, only: [:index, :show]
-  resources :items, only: [:show, :edit, :update, :check, :withdraw]
+  resources :customers, only: [:show, :edit, :update]
+  get "/customers/check" => "customers#check"
+  patch "/customers/withdraw" => "customers#withdraw"
+  resources :cart_items, only: [:index, :create, :update]
+  delete "/cart_items/:id" => ""
   
   # 管理者用
   # URL /admin/sign_in ...
