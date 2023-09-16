@@ -13,7 +13,8 @@ Rails.application.routes.draw do
   get "/customers/check" => "customers#check"
   patch "/customers/withdraw" => "customers#withdraw"
   resources :cart_items, only: [:index, :create, :update]
-  delete "/cart_items/:id" => ""
+  delete "/cart_items/:id" => "cart_items#destroy"
+  delete "/cart_items/destroy_all" => "cart_items#destroy_all"
   
   # 管理者用
   # URL /admin/sign_in ...
