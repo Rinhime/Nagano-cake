@@ -1,2 +1,19 @@
 <h1>（管理者用）商品一覧</h1>
-<h1>商品情報を新規投稿後この画面に遷移</h1>
+<table>
+  <thead>
+    <tr>
+      <th>商品ID</th>
+      <th>商品名</th>
+      <th>税抜価格</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @items.each do |item| %>
+      <tr>
+        <td><%= item.id %></td>
+        <td><%= item.name %></td>
+        <td><%= item.price %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
