@@ -1,8 +1,12 @@
-<h1>（管理者用）商品詳細画面</h1>
+<h1>（管理者用）商品詳細</h1>
 
-<p>画像</p>
-  <% if image.attached? %>
-    <%= image_tag image, size: "200x200" %>
-  <% else %>
-    <%= image_tag 'no_image', size: "200x200" %>
-  <% end %>
+<%= image_tag @item.get_image(100,100) %>
+
+
+<h4>商品名</h4>
+<%= @item.name %>
+<h4>商品説明</h4>
+<%= @item.introduction %>
+<h4>税込価格<br>（税抜価格）</h4>
+<%= @item.add_tax_price %><br>
+（<%= @item.price %>）
