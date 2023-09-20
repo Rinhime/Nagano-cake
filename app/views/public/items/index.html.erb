@@ -1,8 +1,10 @@
 <h1>（会員用）商品一覧</h1>
+<h4>（全<%= @items.count %>件）</h4><br>
 
 <% @items.each do |item| %>
-  <%= image_tag @items.get_image(100,100) %>
-  <%= items.name %>
-  <%= items.price %>
+
+  <%= image_tag item.get_image(100,100) %>
+  <%= item.name %>
+  <%= item.price %>
   
 <% end %>
