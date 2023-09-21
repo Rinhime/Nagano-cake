@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Public::SessionsController < Devise::SessionsController
- before_action :reject_cusutomer
+ 
  
  def after_sign_in_path_for(resource)
   public_root_path
@@ -28,10 +28,10 @@ class Public::SessionsController < Devise::SessionsController
      @customer = Customer.find_by(email: params[:customer][:email])
      return if !@customer
      if @customer.valid_password?(params[:customer][:password])
-         flash[:notice] = "退会済みです。再度ご登録してご利用してください。"
+       if @customer.is_deleted == true
          redirect_to new_customer_session_path
        else
-         flash[:notice] = "項目を入力してください"
+        return
        end
      end
    end
