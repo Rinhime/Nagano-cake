@@ -18,7 +18,4 @@ class Item < ApplicationRecord
     (price * 1.1).floor
   end
     
-  def total_item_amount #アイテム合計金額
-   order_details.sum { |order_detail| order_detail.subtotal }
-  end
 end
