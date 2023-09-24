@@ -1,7 +1,9 @@
 class Public::CartItemsController < ApplicationController
   def index
     @cart_items = CartItem.all
-    @total = 0
+    @subtotal = 0
+    @cart_item = CartItem.new
+    
   end
   
   def create
