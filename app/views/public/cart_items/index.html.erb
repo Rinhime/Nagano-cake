@@ -1,13 +1,14 @@
 <h1>（会員用）ショッピングカート</h1>
 <h1>数量変更、カート削除の要素を</h1>
 
-<%= link_to " カートを空にする", public_cart_items_path, method: :delete, data: {confirm: 'カートを空にして本当によろしいですか？'}, class: "glyphicon glyphicon-trash btn btn-danger" %>
+<%= link_to " カートを空にする", public_cart_items_destroy_all_path, method: :delete, data: {confirm: 'カートを空にして本当によろしいですか？'}, class: "glyphicon glyphicon-trash btn btn-danger" %>
 <table>
   <thead>
     <th>商品名</th>
     <th>単価(税込)</th>
     <th>数量</th>
     <th>小計</th>
+    <th></th>
   </thead>
   <tbody>
   <% @cart_items.each do |cart_item| %>
@@ -24,6 +25,11 @@
       </td>
       <td><%= cart_item.subtotal %></td>
         <% @subtotal += cart_item.subtotal %>
+      <td>
+        
+        <%= link_to "削除する", public_path(cart_item.id), method: :delete %>
+        
+      </td>
     </tr>
   <% end %>
   </tbody>
