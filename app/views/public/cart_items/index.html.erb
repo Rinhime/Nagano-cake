@@ -22,6 +22,7 @@
         <%= form_with model: @cart_item, url: public_cart_items_path, method: :post do |f| %>
         <%= f.select :amount,*[1..5] %>
         <% end %>
+        
       </td>
       <td><%= cart_item.subtotal %></td>
         <% @subtotal += cart_item.subtotal %>
@@ -34,6 +35,7 @@
   <% end %>
   </tbody>
 </table>
+<%= link_to "買い物を続ける", public_root_path %>
 <table>
   <thead>
     <tr>
