@@ -1,10 +1,10 @@
 class Public::OrdersController < ApplicationController
   def new
+    @order = Order.new
+    @customers = Customer.all
   end
   
   def confirm
-    
-    
   end
   
   def index
@@ -18,6 +18,4 @@ class Public::OrdersController < ApplicationController
   
   def finish
   end
-  
-  
 end

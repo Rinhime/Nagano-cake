@@ -1,1 +1,13 @@
-<h1>（会員用）注文情報入力画面（支払方法）</h1>
+<h1>（会員用）注文情報入力（支払方法）</h1>
+
+<h3>支払方法</h3>
+<%= form_with model: @order, url: public_orders_path(@order.id), method: :patch do |f| %>
+  <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
+  <%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card] %>
+  <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
+  <%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer]%>
+<% end %>
+<h3>お届け先</h3>
+<%= form_with model: @customers, url: public_orders_confirm_path, method: :post do |f| %>
+  <%= @customers.name %>
+<% end %>
