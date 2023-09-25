@@ -32,7 +32,7 @@
   <thead>
     <tr>
       <th>合計金額</th>
-      <th><%= (@cart_item.total_price).to_i %></th>
+      <th><%= @total.round.to_s(:delimited) %></th>
     </tr>
   </thead>
 </table>

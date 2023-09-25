@@ -3,7 +3,7 @@ class Public::CartItemsController < ApplicationController
     @cart_items = CartItem.all
     @subtotal = 0
     @cart_item = CartItem.new
-    
+    @total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
   end
   
   def create
