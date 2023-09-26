@@ -3,9 +3,13 @@ class Public::OrdersController < ApplicationController
     @order = Order.new
     @address = current_customer.address
     @postal_code = current_customer.postal_code
+    @last_name = current_customer.last_name
+    @first_name = current_customer.first_name
   end
   
   def confirm
+    @order = Order.new(order_params)
+    
   end
   
   def index
@@ -15,6 +19,9 @@ class Public::OrdersController < ApplicationController
   end
   
   def create
+    @order = Order.new
+    @order.save(order_params)
+    redirect_to public_orders_confirm_path
   end
   
   def finish

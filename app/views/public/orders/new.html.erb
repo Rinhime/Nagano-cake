@@ -1,16 +1,15 @@
 <h1>（会員用）注文情報入力（支払方法）</h1>
 
 <h3>支払方法</h3>
-<%= form_with model: @order, url: public_orders_path(@order.id), method: :patch do |f| %>
+<%= form_with model: @order, url: public_orders_confirm_path(@order.id), method: :post do |f| %>
   <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
   <%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card] %>
   <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
   <%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer]%>
-<% end %>
+
 
 <h3>お届け先</h3>
-  〒<%= @postal_code%>
-  <%= @address %>
-
+  <%= f.select :address_id, options_from_collection_for_select(@address.all, :id, :address_display) %>
   
-  <%= link_to "確認画面へ進む", public_orders_confirm_path %>
+  <%= f.submit "確認画面へ進む" %>
+<% end %>
