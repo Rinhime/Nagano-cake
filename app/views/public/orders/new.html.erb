@@ -7,7 +7,10 @@
   <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
   <%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer]%>
 <% end %>
+
 <h3>お届け先</h3>
-<%= form_with model: @customers, url: public_orders_confirm_path, method: :post do |f| %>
-  <%= @customers.name %>
-<% end %>
+  〒<%= @postal_code%>
+  <%= @address %>
+
+  
+  <%= link_to "確認画面へ進む", public_orders_confirm_path %>

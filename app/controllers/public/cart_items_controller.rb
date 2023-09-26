@@ -24,7 +24,7 @@ class Public::CartItemsController < ApplicationController
   
   def update
     @cart_item = current_customer
-    @item = Item.all
+    
     @cart_item.update(cart_item_params)
     redirect_to public_cart_items_path
   end

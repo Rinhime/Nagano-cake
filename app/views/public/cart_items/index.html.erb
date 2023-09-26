@@ -21,8 +21,8 @@
       <td>
         <%= form_with model: @cart_item, url: public_cart_items_path, method: :post do |f| %>
         <%= f.select :amount,*[1..5] %>
+        <%= f.submit "変更" %>
         <% end %>
-        
       </td>
       <td><%= cart_item.subtotal %></td>
         <% @subtotal += cart_item.subtotal %>
@@ -44,4 +44,5 @@
     </tr>
   </thead>
 </table>
+
 <%= link_to "情報入力に進む", new_public_order_path %>
