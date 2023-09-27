@@ -9,7 +9,7 @@
 
 
 <h3>お届け先</h3>
-  <%= f.select :address_id, options_from_collection_for_select(@address.all, :id, :address_display) %>
+  <%= f.select :address_id, options_from_collection_for_select(Orders.all, :id, :address_display) %>
   
   <%= f.submit "確認画面へ進む" %>
 <% end %>

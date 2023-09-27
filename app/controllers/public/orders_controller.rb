@@ -1,10 +1,8 @@
 class Public::OrdersController < ApplicationController
   def new
     @order = Order.new
-    @address = current_customer.address
-    @postal_code = current_customer.postal_code
-    @last_name = current_customer.last_name
-    @first_name = current_customer.first_name
+    @customer = current_customer
+    
   end
   
   def confirm
