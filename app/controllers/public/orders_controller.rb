@@ -15,6 +15,7 @@ class Public::OrdersController < ApplicationController
     @order.name = current_customer.last_name + current_customer.first_name
     @cart_items = current_customer.cart_items
     @total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
+    @shipping_cost = 800
   end
   
   def index
@@ -24,9 +25,9 @@ class Public::OrdersController < ApplicationController
   end
   
   def create
-    @order = Order.new
-    @order.save(order_params)
-    redirect_to public_orders_confirm_path
+    @order = Order.new(order_params)
+    @order.save
+    redirect_to public_orders_finish_path
   end
   
   def finish

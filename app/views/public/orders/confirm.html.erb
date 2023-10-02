@@ -23,7 +23,7 @@
   </tbody>
 </table>
 
-<tabre>
+<table>
   <tbody>
     <tr>
       <td>送料</td>
@@ -35,12 +35,12 @@
     </tr>
     <tr>
       <td>請求合計</td>
-      <td><%= @total.round.to_s(:delimited) + 800 %></td>
+      <td><%= @total + @shipping_cost %></td>
     </tr>
   </tbody>
-</tabre>
-
+</table>
 <% end %>
+
 <table>
   <tbady>
     <tr>
@@ -55,3 +55,14 @@
     </tr>
   </tbady>
 </table>
+
+<%= form_with model: @order, url: public_orders_path, method: :post do |f| %>
+  <%= f.hidden_field :customer_id %>
+  <%= f.hidden_field :shipping_cost %>
+  <%= f.hidden_field :payment_price %>
+  <%= f.hidden_field :payment_method %>
+  <%= f.hidden_field :name %>
+  <%= f.hidden_field :address %>
+  <%= f.hidden_field :postal_code %>
+  <%= f.submit "注文を確定する" %>
+<% end %>
