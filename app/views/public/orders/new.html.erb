@@ -7,7 +7,6 @@
   <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
   <%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer]%>
 
-
 <h3>お届け先</h3>
   <%= f.hidden_field :customer_id, value:@customer.id %>
   〒<%= @postal_code %>

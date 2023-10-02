@@ -9,7 +9,7 @@ class Public::CartItemsController < ApplicationController
   def create
     @cart_item = CartItem.find_by(cart_item_params)
     if @cart_item
-      @cart_item.amount += CartItem.new(cart_item_params).amount
+      @cart_item.amount += params[:cart_item][:amount].to_i
     else
       @cart_item = CartItem.new(cart_item_params)
     end

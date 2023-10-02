@@ -9,7 +9,7 @@
   <p><%= @item.introduction %></p>
 
   <p>￥<%= @item.add_tax_price %>（税込）</p>
-  
+  <!--item_idカラムの@item.idの情報を入力せずに送る-->
   <%= f.hidden_field :item_id, value:@item.id %>
   
   <%= f.select :amount,*[1..5] %>

@@ -1,5 +1,6 @@
 <h1>（会員用）注文情報確認画面</h1>
 
+<% @cart_items.each do |cart_item| %>
 <table>
   <thead>
     <tr>
@@ -10,25 +11,41 @@
     </tr>
   </thead>
   <tbody>
-    <% @cart_items.each do |cart_item| %>
     <tr>
       <td>
         <%= image_tag cart_item.item.get_image(100,100) %>
         <%= cart_item.item.name %>
       </td>
       <td><%= cart_item.item.with_tax_price %></td>
-      <td><%= cart_item.item_id.count %></td>
+      <td><%= cart_item.amount %></td>
       <td><%= cart_item.subtotal %></td>
     </tr>
-    <% end %>
   </tbody>
 </table>
 
+<tabre>
+  <tbody>
+    <tr>
+      <td>送料</td>
+      <td>800</td>
+    </tr>
+    <tr>
+      <td>商品合計</td>
+      <td><%= @total.round.to_s(:delimited) %></td>
+    </tr>
+    <tr>
+      <td>請求合計</td>
+      <td><%= @total.round.to_s(:delimited) + 800 %></td>
+    </tr>
+  </tbody>
+</tabre>
+
+<% end %>
 <table>
   <tbady>
     <tr>
       <th>支払い方法</th>
-      <th><%= @order.payment_method %></th>
+      <th><%= @order.payment_method_i18n %></th>
     </tr>
     <tr>
       <th>お届け先</th>

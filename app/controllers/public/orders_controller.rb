@@ -14,6 +14,7 @@ class Public::OrdersController < ApplicationController
     @order.address = current_customer.address
     @order.name = current_customer.last_name + current_customer.first_name
     @cart_items = current_customer.cart_items
+    @total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
   end
   
   def index
@@ -34,7 +35,7 @@ class Public::OrdersController < ApplicationController
   private
   
     def order_params
-      params.require(:order).permit(:payment_method, :shipping_cost, :payment_price, :postal_code, :address, :name)
+      params.require(:order).permit(:payment_method, :shipping_cost, :payment_price, :postal_code, :address, :name, :customer_id)
     end
   
 end
