@@ -58,8 +58,8 @@
 
 <%= form_with model: @order, url: public_orders_path, method: :post do |f| %>
   <%= f.hidden_field :customer_id %>
-  <%= f.hidden_field :shipping_cost %>
-  <%= f.hidden_field :payment_price %>
+  <%= f.hidden_field :shipping_cost,:value => @shipping_cost %>
+  <%= f.hidden_field :payment_price,:value => @total %>
   <%= f.hidden_field :payment_method %>
   <%= f.hidden_field :name %>
   <%= f.hidden_field :address %>

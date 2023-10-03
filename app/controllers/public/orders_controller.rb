@@ -7,7 +7,7 @@ class Public::OrdersController < ApplicationController
     @first_name = current_customer.first_name
     @customer = current_customer
   end
-  
+
   def confirm
     @order = Order.new(order_params)
     @order.postal_code = current_customer.postal_code
@@ -17,26 +17,26 @@ class Public::OrdersController < ApplicationController
     @total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
     @shipping_cost = 800
   end
-  
+
   def index
   end
-  
+
   def show
   end
-  
+
   def create
     @order = Order.new(order_params)
     @order.save
     redirect_to public_orders_finish_path
   end
-  
+
   def finish
   end
-  
+
   private
-  
+
     def order_params
       params.require(:order).permit(:payment_method, :shipping_cost, :payment_price, :postal_code, :address, :name, :customer_id)
     end
-  
+
 end

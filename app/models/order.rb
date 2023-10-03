@@ -7,6 +7,6 @@ class Order < ApplicationRecord
   '〒' + current_customer.postal_code + ' ' + current_customer.address + ' ' + current_customer.last_name + ' ' + current_customer.first_name
   end
   
-  
+  SIPPING_COST = 800
   
 end
