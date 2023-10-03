@@ -9,9 +9,9 @@ Rails.application.routes.draw do
   namespace :public do
     root to: "homes#top"
     get "/about" => "homes#about", as: "about"
-    resources :orders, only: [:new, :create, :index, :show]
     post "/orders/confirm" => "orders#confirm"
     get "/orders/finish" => "orders#finish"
+    resources :orders, only: [:new, :create, :index, :show]
     resources :items, only: [:index, :show]
     # resources :customers, only: [:show, :edit, :update]
     get "/customers/show" => "customers#show"

@@ -1,1 +1,25 @@
-<h1>（会員用）注文履歴画面</h1>
+<h1>（会員用）注文履歴一覧</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>注文日</th>
+      <th>配送先</th>
+      <th>注文商品</th>
+      <th>支払金額</th>
+      <th>注文詳細</th>
+    </tr>
+  </thead>
+  <% @orders.each do |order| %>
+  <tbody>
+    <tr>
+      <td><%= order.updated_at.strftime('%Y/%m/%d') %></td>
+      <td><%= order.address %></td>
+      <!--注文商品を表示できるようにする-->
+      <td></td>
+      <td><%= order.payment_price%></td>
+      <td><%= link_to "表示する", public_order_path(order.id) %></td>
+    </tr>
+  </tbody>
+  <% end %>
+</table>

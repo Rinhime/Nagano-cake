@@ -1,1 +1,0 @@
-SIPPING_COST = 800

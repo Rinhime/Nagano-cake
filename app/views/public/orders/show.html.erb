@@ -1,1 +1,70 @@
-<h1>（会員用）注文履歴詳細画面</h1>
+<h1>（会員用）注文履歴詳細</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>注文情報</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>注文日</td>
+      <td><%= @order.updated_at.strftime('%Y/%m/%d') %></td>
+    </tr>
+    <tr>
+      <td>配送先</td>
+      <td><%= @order.address %></td>
+    </tr>
+    <tr>
+      <td>支払方法</td>
+      <td><%= @order.payment_method_i18n %></td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>請求情報</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>商品合計</td>
+      <td><%= @order.payment_price %></td>
+    </tr>
+    <tr>
+      <td>配送料</td>
+      <td><%= @order.shipping_cost %></td>
+    </tr>
+    <tr>
+      <td>ご請求額</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>注文内容</th>
+    </tr>
+    <tr>
+      <th>商品</th>
+      <th>単価（税込）</th>
+      <th>個数</th>
+      <th>小計</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
