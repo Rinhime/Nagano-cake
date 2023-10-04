@@ -28,19 +28,24 @@ class Public::OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
-    @order.save
-    redirect_to public_orders_finish_path
-    
-    current_customer.cart_items.each do |cart_item|
-      @order_item = OrderItems.new
-      @order_item.order_id =  @order.id
-      @order_item.item_id = cart_item.item_id
-      @order_item.amounts = cart_item.amounts
-      @order_item.tax_price = (cart_item.item.price*1.1).floor
-      @order_item.save
+    if @order.save
+
+      current_customer.cart_items.each do |cart_item|
+      
+        order_item = OrderItem.new
+        order_item.item_id = cart_item.item_id
+        order_item.order_id = @order.id
+        order_item.item_amount = cart_item.amount
+        order_item.tax_price = cart_item.item.price
+        order_item.save
+      end
+      
+      redirect_to public_orders_finish_path
+      current_customer.cart_items.destroy_all #カートの中身を削除
+    else
+      @order = Order.new(order_params)
+      render :new
     end
-      current_member.cart_items.destroy_all #カートの中身を削除
-      redirect_to thanx_orders_path
   end
 
   def finish
