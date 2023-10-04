@@ -24,6 +24,7 @@ class Public::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    @order_item = @order.order_item
   end
 
   def create
@@ -32,12 +33,12 @@ class Public::OrdersController < ApplicationController
 
       current_customer.cart_items.each do |cart_item|
       
-        order_item = OrderItem.new
-        order_item.item_id = cart_item.item_id
-        order_item.order_id = @order.id
-        order_item.item_amount = cart_item.amount
-        order_item.tax_price = cart_item.item.price
-        order_item.save
+        @order_item = OrderItem.new
+        @order_item.item_id = cart_item.item_id
+        @order_item.order_id = @order.id
+        @order_item.item_amount = cart_item.amount
+        @order_item.tax_price = cart_item.item.price
+        @order_item.save
       end
       
       redirect_to public_orders_finish_path

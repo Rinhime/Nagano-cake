@@ -48,6 +48,7 @@
   </tbody>
 </table>
 
+<% @order_item.each do |order_item| %>
 <table>
   <thead>
     <tr>
@@ -62,13 +63,11 @@
   </thead>
   <tbody>
     <tr>
-      <td></td>
-    </tr>
-    <tr>
-      <td></td>
-    </tr>
-    <tr>
-      <td></td>
+      <td><%= order_item.order_id %></td>
+      <td><%= order_item.tax_price %></td>
+      <td><%= order_item.item_amount %></td>
+      <td><%= order_item.subtotal %></td>
     </tr>
   </tbody>
 </table>
+<% end %>
