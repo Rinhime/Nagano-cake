@@ -13,7 +13,11 @@
     </tr>
     <tr>
       <td>配送先</td>
-      <td><%= @order.address %></td>
+      <td>
+        〒<%= @order.postal_code%><br>
+        <%= @order.address %><br>
+        <%= @order.name %>
+      </td>
     </tr>
     <tr>
       <td>支払方法</td>
@@ -39,7 +43,7 @@
     </tr>
     <tr>
       <td>ご請求額</td>
-      <td></td>
+      <td><%= @order.shipping_cost + @order.payment_price %></td>
     </tr>
   </tbody>
 </table>
