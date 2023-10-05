@@ -63,10 +63,10 @@
   </thead>
   <tbody>
     <tr>
-      <td><%= order_item.order_id %></td>
-      <td><%= order_item.tax_price %></td>
+      <td><%= order_item.item.name %></td>
+      <td><%= (order_item.tax_price * 1.1).floor %></td>
       <td><%= order_item.item_amount %></td>
-      <td><%= order_item.subtotal %></td>
+      <td><%= (order_item.tax_price * 1.1).floor * order_item.item_amount %></td>
     </tr>
   </tbody>
 </table>
