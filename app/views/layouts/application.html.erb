@@ -10,63 +10,78 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <header>
-      <% if admin_signed_in? %>
-        <% if request.fullpath.include? "/admin" %>
-          <li>
-            <%= link_to "商品一覧", admin_items_path %>
-          </li>
-          <li>
-            <%= link_to "会員一覧", admin_customers_path %>
-          </li>
-          <li>
-            注文履歴一覧
-          </li>
-          <li>
-            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-          </li>
-        <% else %>
-          <li>
-            <%= link_to "マイページ", public_customers_show_path %>
-          </li>
-          <li>
-            <%= link_to "商品一覧", public_items_path %>
-          </li>
-          <li>
-            <%= link_to "カート", public_cart_items_path %>
-          </li>
-          <li>
-            <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
-          </li>
-        <% end %>
-      <% elsif customer_signed_in? %>
-          <li>
-            <%= link_to "マイページ", public_customers_show_path %>
-          </li>
-          <li>
-            <%= link_to "商品一覧", public_items_path %>
-          </li>
-          <li>
-            <%= link_to "カート", public_cart_items_path %>
-          </li>
-          <li>
-            <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
-          </li>
-        <% else %>
-          <li>
-            <%= link_to "だいたい", about_path %>
-          </li>
-          <li>
-            <%= link_to "商品一覧", about_path %>
-          </li>
-          <li>
-            <%= link_to "新規登録", customer_session_path%>
-          </li>
-          <li>
-            <%= link_to "ログイン", new_admin_session_path %>
-          </li>
-      <% end %>
+  <body class="d-flex flex-column vh-100">
+    <header class="shadow-sm">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand p-3" href="/public">ながのCAKE</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                  aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+              
+            <% if admin_signed_in? %>
+            <div class="header row p-3">
+              <% if request.fullpath.include? "/admin" %>
+              <li class="nav-item p-3">
+                <%= link_to "商品一覧", admin_items_path, class: 'nav-link text-light' %>
+              </li>
+              <li class="nav-item p-3">
+                <%= link_to "会員一覧", admin_customers_path, class: 'nav-link text-light' %>
+              </li>
+              <li class="nav-item p-3">
+                <%= link_to "注文履歴一覧", public_orders_path, class: 'nav-link text-light' %>
+              </li>
+              <li class="nav-item p-3">
+                <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-light' %>
+              </li>
+            <% else %>
+              <li class="nav-item p-3">
+                <%= link_to "マイページ", public_customers_show_path, class: 'nav-link text-light' %>
+              </li>
+              <li class="nav-item p-3">
+                <%= link_to "商品一覧", public_items_path, class: 'nav-link text-light' %>
+              </li>
+              <li class="nav-item p-3">
+                <%= link_to "カート", public_cart_items_path, class: 'nav-link text-light' %>
+              </li>
+              <li class="nav-item p-3">
+                <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'nav-link text-light' %>
+              </li>
+            <% end %>
+            <% elsif customer_signed_in? %>
+              <li class="nav-item p-3">
+                <%= link_to "マイページ", public_customers_show_path, class: 'nav-link text-light' %>
+              </li>
+              <li class="nav-item p-3">
+                <%= link_to "商品一覧", public_items_path, class: 'nav-link text-light' %>
+              </li>
+              <li class="nav-item p-3">
+                <%= link_to "カート", public_cart_items_path, class: 'nav-link text-light' %>
+              </li>
+              <li class="nav-item p-3">
+                <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'nav-link text-light' %>
+              </li>
+            <% else %>
+              <li class="nav-item p-3">
+                <%= link_to "だいたい", public_about_path, class: 'nav-link text-light' %>
+              </li>
+              <li class="nav-item p-3">
+                <%= link_to "商品一覧", public_items_path, class: 'nav-link text-light' %>
+              </li>
+              <li class="nav-item p-3">
+                <%= link_to "新規登録", new_customer_registration_path, class: 'nav-link text-light' %>
+              </li>
+              <li class="nav-item p-3">
+                <%= link_to "ログイン", new_admin_session_path, class: 'nav-link text-light' %>
+              </li>
+            </>
+          <% end %>
+          </div>
+        </div>
+      </nav>    
     </header>
     <%= yield %>
   </body>
