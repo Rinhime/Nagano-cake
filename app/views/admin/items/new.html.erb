@@ -3,24 +3,33 @@
     <h1>商品新規登録</h1>
   </div>
   
+  <%= form_with model:@item, url: admin_items_path do |f| %>
   <div class="row py-5">
-    <div class="col-md-8">
-      <%= form_with model:@item, url: admin_items_path do |f| %>
-        <h4>商品画像</h4>
-        <%= f.file_field :image, accept: "image/*" %>
-  
-        <h4>商品名</h4>
-        <%= f.text_field :name %>
-  
-        <h4>商品説明</h4>
-        <%= f.text_area :introduction %>
-  
-        <h4>税抜価格</h4>
-        <%= f.text_field :price %>円
-        <br>
-        <%= f.submit '新規登録' %>
-      <% end %>
-
+    <div class="col-md-9 offset-md-2">
+    <table>
+      <tr>
+        <td><%= f.label :image, "商品画像" %></td>
+        <td><%= f.file_field :image, accept: "image/*" %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :name, "商品名" %></td>
+        <td><%= f.text_field :name, :size=>"50" %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :introduction, "商品説明" %></td>
+        <td><%= f.text_area :introduction, :size=>"52x10" %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :price, "税抜価格" %></td>
+        <td><%= f.text_field :price, :size=>"50" %>円</td>
+      </tr>
+    </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-5 offset-md-5">
+      <input class="btn btn-success" type="submit" value="新規登録">
     </div>
   </div>
 </div>
+<% end %>
