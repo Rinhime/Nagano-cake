@@ -1,14 +1,19 @@
-<div class="container px-5 px-sm-0 py-5"></div>
-  <div class="row"></div>
-<h1>商品一覧</h1>
-<h4>（全<%= @items.count %>件）</h4><br>
-
-<% @items.each do |item| %>
-
-<%= link_to public_item_path(item.id) do %>
-  <%= image_tag item.get_image(100,100) %>
-  <%= item.name %>
-  <%= item.price %>
-<% end %>
-  
-<% end %>
+<div class="container px-5 px-sm-0 py-5">
+  <div class="row">
+    <h1>商品一覧</h1>
+    <h4>（全<%= @items.count %>件）</h4>
+  </div>
+  <div class="row row-cols-4 py-5">
+    
+    <% @items.each do |item| %>
+    <div class="col py-3">
+      <%= link_to public_item_path(item.id) do %>
+        <%= image_tag item.get_image(100,100) %><br>
+        <%= item.name %><br>
+        ￥<%= item.price %>
+      <% end %>
+    </div>
+    <% end %>
+    
+  </div>
+</div>
