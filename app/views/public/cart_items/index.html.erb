@@ -21,7 +21,7 @@
             <%= image_tag cart_item.item.get_image(100,100) %>
             <%= cart_item.item.name %>
           </td>
-          <td class="align-middle"><%= cart_item.item.with_tax_price %></td>
+          <td class="align-middle"><%= cart_item.item.with_tax_price.to_s(:delimited) %></td>
           <td class="align-middle">
             <%= form_with model: @cart_item, url: public_cart_items_path, method: :post do |f| %>
             <%= f.select :amount,*[1..5] %>
@@ -29,7 +29,7 @@
             <% end %>
           </td>
           <td class="align-middle"><%= cart_item.subtotal %></td>
-            <% @subtotal += cart_item.subtotal %>
+            <% (@subtotal += cart_item.subtotal).to_s(:delimited) %>
           <td class="align-middle">
             <%= link_to "削除する", public_path(cart_item.id), method: :delete, class: "btn btn-sm btn-danger" %>
           </td>
