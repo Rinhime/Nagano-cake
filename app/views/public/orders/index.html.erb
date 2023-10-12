@@ -21,10 +21,10 @@
       <!--注文商品を表示できるようにする-->
           <td>
             <% order.order_items.each do |order_item| %>
-              <%= order_item.item.item_name %>
+              <%= order_item.item.name %><br>
             <% end %>
           </td>
-          <td><%= order.payment_price%></td>
+          <td><%= order.payment_price%>円</td>
           <td><%= link_to "表示する", public_order_path(order.id), class: "btn btn-sm btn-primary" %></td>
         </tr>
       </tbody>

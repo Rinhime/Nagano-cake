@@ -20,13 +20,11 @@ class Public::OrdersController < ApplicationController
 
   def index
     @orders = current_customer.orders
-    
-    
   end
 
   def show
     @order = Order.find(params[:id])
-    @order_item = @order.order_item
+    # @order_item = @order.order_item
   end
 
   def create
