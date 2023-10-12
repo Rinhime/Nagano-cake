@@ -4,14 +4,14 @@
     <%= link_to " カートを空にする", public_cart_items_destroy_all_path, method: :delete, data: {confirm: 'カートを空にして本当によろしいですか？'}, class: "glyphicon glyphicon-trash btn btn-danger" %>
   </div>
   <div class="row justify-content-center py-5">
-    <table class="table">
+    <table class="table table-bordered border-dark">
       <thead>
         <tr>
-          <th>商品名</th>
-          <th>単価(税込)</th>
-          <th>数量</th>
-          <th>小計</th>
-          <th></th>
+          <th bgcolor="#f5f5f5">商品名</th>
+          <th bgcolor="#f5f5f5">単価(税込)</th>
+          <th bgcolor="#f5f5f5">数量</th>
+          <th bgcolor="#f5f5f5">小計</th>
+          <th bgcolor="#f5f5f5"></th>
         </tr>
       </thead>
       <tbody>
@@ -21,32 +21,35 @@
             <%= image_tag cart_item.item.get_image(100,100) %>
             <%= cart_item.item.name %>
           </td>
-          <td><%= cart_item.item.with_tax_price %></td>
-          <td>
+          <td class="align-middle"><%= cart_item.item.with_tax_price %></td>
+          <td class="align-middle">
             <%= form_with model: @cart_item, url: public_cart_items_path, method: :post do |f| %>
             <%= f.select :amount,*[1..5] %>
-            <%= f.submit "変更" %>
+            <input class="btn btn-success" type="submit" value="変更">
             <% end %>
           </td>
-          <td><%= cart_item.subtotal %></td>
+          <td class="align-middle"><%= cart_item.subtotal %></td>
             <% @subtotal += cart_item.subtotal %>
-          <td>
-            <%= link_to "削除する", public_path(cart_item.id), method: :delete %>
+          <td class="align-middle">
+            <%= link_to "削除する", public_path(cart_item.id), method: :delete, class: "btn btn-sm btn-danger" %>
           </td>
         </tr>
       <% end %>
       </tbody>
     </table>
-    <%= link_to "買い物を続ける", public_root_path %>
-    <table class="table">
+    <div class="col-7 py-5">
+      <%= link_to "買い物を続ける", public_root_path, class: "btn btn-sm btn-primary" %>
+    </div>
+    <div class="col-5 py-5">
+    <table class="table table-bordered border-dark">
       <thead>
         <tr>
-          <th>合計金額</th>
+          <th bgcolor="#f5f5f5">合計金額</th>
           <th><%= @total.round.to_s(:delimited) %></th>
         </tr>
       </thead>
     </table>
-
-    <%= link_to "情報入力に進む", new_public_order_path %>
+    </div>
+    <%= link_to "情報入力に進む", new_public_order_path, class: "btn btn-sm btn-success" %>
   </div>  
-</div>    
+</div>

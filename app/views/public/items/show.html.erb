@@ -7,11 +7,11 @@
       <div class="col-5">
         <h3><%= @item.name %></h3>
         <p><%= @item.introduction %></p>
-        <p>￥<%= @item.add_tax_price %>（税込）</p>
+        <h5>￥<%= @item.add_tax_price %>（税込）</h5>
       <!--item_idカラムの@item.idの情報を入力せずに送る-->
         <%= f.hidden_field :item_id, value:@item.id %>
         <%= f.select :amount,*[1..5] %>
-        <%= f.submit 'カートに入れる' %>
+        <input class="btn btn-success" type="submit" value="カートに入れる">
       </div>  
     <% end %>
   </div>  
