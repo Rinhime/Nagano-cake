@@ -1,19 +1,37 @@
-<div class="container px-5 px-sm-0 py-5"></div>
-
-<sidber>
-  <p>ジャンル検索</p>
-  ケーキ<br>
-  焼き菓子<br>
-  プリン<br>
-  キャンディ<br>
-</sidber>
-<main>
-  <p>
-    ようこそ、ながのCAKEへ！<br>
-    このサイトは、ケーキ販売のECサイトになります。<br>
-    会員でない方も商品の閲覧はできますが、<br>
-    購入には会員登録が必要になります。
-  </p>
-  <h3>新着商品</h3>
+<div class="container px-5 px-sm-0 py-5">
+  <div class="row">
+    <div class="col-md-3">
+      <p>ジャンル検</p>
+      ケーキ<br>
+      焼き菓子<br>
+      プリン<br>
+      キャンディ<br>
+    </div>
+  </div>
   
-</main>
+    <div class="col-md-6">
+      <p>
+        ようこそ、ながのCAKEへ！<br>
+        このサイトは、ケーキ販売のECサイトになります。<br>
+        会員でない方も商品の閲覧はできますが、<br>
+        購入には会員登録が必要になります。
+      </p>
+    </div>
+  
+  
+  <div class="row py-5">
+    <div class="col-md-8">
+      <h3>新着商品</h3>
+    </div>
+  </div>
+  <div class="row py-3">
+      <% @items.each do |item| %>
+        <div class="col-md-2 offset-md-1 ">
+          <%= image_tag item.get_image(100,100) %><br>
+          <%= item.name %><br>
+          ￥<%= item.price %>
+        </div>
+        <% end %>
+  
+  </div>
+</div>
