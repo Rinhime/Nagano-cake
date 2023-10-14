@@ -3,6 +3,7 @@
     <h1>ショッピングカート</h1>
     <%= link_to " カートを空にする", public_cart_items_destroy_all_path, method: :delete, data: {confirm: 'カートを空にして本当によろしいですか？'}, class: "glyphicon glyphicon-trash btn btn-danger" %>
   </div>
+  
   <div class="row justify-content-center py-5">
     <table class="table table-bordered border-dark">
       <thead>
@@ -14,6 +15,7 @@
           <th bgcolor="#f5f5f5"></th>
         </tr>
       </thead>
+      
       <tbody>
       <% @cart_items.each do |cart_item| %>
         <tr>
@@ -37,9 +39,11 @@
       <% end %>
       </tbody>
     </table>
+    
     <div class="col-7 py-5">
       <%= link_to "買い物を続ける", public_root_path, class: "btn btn-sm btn-primary" %>
     </div>
+    
     <div class="col-5 py-5">
     <table class="table table-bordered border-dark">
       <thead>
@@ -50,6 +54,7 @@
       </thead>
     </table>
     </div>
+    
     <%= link_to "情報入力に進む", new_public_order_path, class: "btn btn-sm btn-success" %>
   </div>  
 </div>
