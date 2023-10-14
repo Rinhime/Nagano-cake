@@ -1,13 +1,13 @@
 <div class="container px-5 px-sm-0 py-5">
   <div class="row">
     <div class="col-md-3">
-      <p>ジャンル検</p>
+      <p>ジャンル検索</p>
       ケーキ<br>
       焼き菓子<br>
       プリン<br>
       キャンディ<br>
     </div>
-  </div>
+  
   
     <div class="col-md-6">
       <p>
@@ -17,7 +17,7 @@
         購入には会員登録が必要になります。
       </p>
     </div>
-  
+  </div>
   
   <div class="row py-5">
     <div class="col-md-8">
@@ -25,13 +25,15 @@
     </div>
   </div>
   <div class="row py-3">
-      <% @items.each do |item| %>
-        <div class="col-md-2 offset-md-1 ">
-          <%= image_tag item.get_image(100,100) %><br>
-          <%= item.name %><br>
-          ￥<%= item.price %>
-        </div>
-        <% end %>
-  
+    <% @items.each do |item| %>
+    <div class="col-md-2 offset-md-1">
+      <%= image_tag item.get_image(100,100) %><br>
+      <%= item.name %><br>
+      ￥<%= item.price %>
+    </div>
+    <% end %>
+    <div class="col-md-9 offset-md-10 py-5">
+      <%= link_to "すべての商品を見る＞", public_items_path %>
+    </div>
   </div>
 </div>
