@@ -11,7 +11,8 @@
       <!--item_idカラムの@item.idの情報を入力せずに送る-->
         <%= f.hidden_field :item_id, value:@item.id %>
         <%= f.select :amount,*[1..5] %>
-        <input class="btn btn-success" type="submit" value="カートに入れる">
+        <!--<input class="btn btn-success" type="submit" value="カートに入れる">-->
+        <%= f.submit "カートに入れる" %>
       </div>
     <% end %>
   </div>  
