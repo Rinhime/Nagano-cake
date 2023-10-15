@@ -27,9 +27,11 @@
   <div class="row py-3">
     <% @items.each do |item| %>
     <div class="col-md-2 offset-md-1">
+      <%= link_to public_item_path(item.id) do %>
       <%= image_tag item.get_image(100,100) %><br>
       <%= item.name %><br>
       ￥<%= item.price %>
+      <% end %>
     </div>
     <% end %>
     <div class="col-md-9 offset-md-10 py-5">
