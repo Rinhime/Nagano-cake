@@ -6,10 +6,10 @@ class CartItem < ApplicationRecord
   end
   
   def total_price
-		item.to_a.sum { |item| item.total_price }
-	end
-	
-	def sum_of_price
+    item.to_a.sum { |item| item.total_price }
+  end
+
+  def sum_of_price
     item.with_tax_price * amount
   end  
   
